@@ -6,48 +6,31 @@ import XStyle from "../util/styles";
 import { scale, verticalScale } from "../components/adaptive/Adaptiveness";
 import BotttomButtons from "../components/shared/services/buttons/BottomButtons";
 import CustomButton from "../components/shared/services/buttons/ServiceButton";
+import { useLocalSearchParams } from "expo-router";
+import servicesData from "../components/data/shared/ServicesData";
 export default function ServiceDetails() {
-  const route = useRoute();
-  const { serviceData, showButtons, completeJob, AllReq } = route.params;
-  let showCompleteJob = false;
-  if (completeJob) {
-    showCompleteJob = true;
-  }
-  let width = 148;
-  let titleText = "Accept";
-  if (serviceData.quoteOption === "Send a Personalized Quote") {
-    width = "full";
-    titleText = "Send an updated offer";
-  }
+  const { serviceId } = useLocalSearchParams();
+  const service = servicesData.find((s) => s.id.toString() === serviceId);
 
-  let path =
-    titleText === "Accept" ? "ContractorBottomTabs" : "UpdateQuoteScreen";
-
-  const verticalHeight = titleText === "Accept" ? 140 : 90;
   return (
     <View className="flex-1 bg-[#F9F9F9]">
       <View className="flex-1 mb-[2%]  px-[6%] bg-[#F9F9F9]">
-        <CustomTitle title={serviceData.serviceType} />
+        <CustomTitle title={service.serviceType} />
         <ScrollView
           contentContainerStyle={{ paddingBottom: verticalScale(40) }}
           showsVerticalScrollIndicator={false}
         >
           <View>
-            <ProviderInfo
-              showButtons={showButtons}
-              showCompleteJob={showCompleteJob}
-              serviceData={serviceData}
-              AllReq={AllReq}
-            />
+            <ProviderInfo serviceData={service} />
           </View>
-          {showCompleteJob && (
+          {/* {showCompleteJob && (
             <View className="mt-[8%] ">
               <ActionButton route="ReviewFormScreen" title="Complete Job" />
             </View>
-          )}
+          )} */}
         </ScrollView>
       </View>
-      {showButtons && (
+      {/* {showButtons && (
         <View
           className="flex-col gap-[6%]   border border-[#D8DCE0]  "
           style={[
@@ -83,12 +66,12 @@ export default function ServiceDetails() {
             </View>
           )}
         </View>
-      )}
-      {AllReq && (
+      )} */}
+      {/* {AllReq && (
         <View className="px-[6%] pb-[8%]">
           <CustomButton route="JobFormScreen" title="Edit Job" />
         </View>
-      )}
+      )} */}
     </View>
   );
 }

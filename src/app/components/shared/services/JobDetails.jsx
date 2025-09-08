@@ -1,33 +1,8 @@
 import { View, Text, Image, FlatList } from "react-native";
 import { scale, verticalScale } from "../../adaptive/Adaptiveness";
 import XStyle from "../../../util/styles";
+import { imagesData } from "../../data/shared/ServicesData";
 
-const imagesData = [
-  {
-    id: "1",
-    image: require("../../../../../assets/images/home/jobs/summary1.png"),
-  },
-  {
-    id: "2",
-    image: require("../../../../../assets/images/home/jobs/summary2.png"),
-  },
-  {
-    id: "3",
-    image: require("../../../../../assets/images/home/jobs/summary1.png"),
-  },
-  {
-    id: "4",
-    image: require("../../../../../assets/images/home/jobs/summary2.png"),
-  },
-  {
-    id: "5",
-    image: require("../../../../../assets/images/home/jobs/summary1.png"),
-  },
-  {
-    id: "6",
-    image: require("../../../../../assets/images/home/jobs/summary1.png"),
-  },
-];
 function showImages({ item }) {
   return (
     <View>
@@ -42,12 +17,7 @@ function showImages({ item }) {
     </View>
   );
 }
-export default function ProviderInfo({
-  serviceData,
-  showCompleteJob,
-  showButtons,
-  AllReq,
-}) {
+export default function ProviderInfo({ serviceData }) {
   const {
     price,
     profileImage,
@@ -128,7 +98,7 @@ export default function ProviderInfo({
               ))}
             </View>
           </View>
-          {(showCompleteJob || showButtons) && (
+          {/* {(showCompleteJob || showButtons) && (
             <View className="flex-row overflow-hidden mt-[3%] w-full justify-between">
               <Text className="font-poppins-semiBold text-xs text-[#6B7280]">
                 Address
@@ -137,7 +107,7 @@ export default function ProviderInfo({
                 {address.split(",").slice(-2).join(", ")}{" "}
               </Text>
             </View>
-          )}
+          )} */}
           {/* Booking Date */}
           <View className="flex-row mt-[3%] justify-between ">
             <Text className="font-poppins-semiBold text-xs text-[#6B7280]">
@@ -172,20 +142,18 @@ export default function ProviderInfo({
                 borderRadius: scale(20),
               }}
               source={{
-                uri: AllReq
-                  ? "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
-                  : profileImage || "https://via.placeholder.com/300",
+                uri: profileImage || "https://via.placeholder.com/300",
               }}
               className="mt-[2%]"
             />
             <View className="mt-[2%]">
               <Text className="font-poppins-500medium text-xl text-[#1F2937]">
-                {AllReq ? "Jackson" : providerName}
+                {providerName}
               </Text>
             </View>
           </View>
           {/* Price and Time */}
-          <View className="flex-row pt-[1%] justify-between">
+          {/* <View className="flex-row pt-[1%] justify-between">
             <Text className="font-poppins-400regular text-base text-[#1F2937]">
               Price
             </Text>
@@ -194,7 +162,7 @@ export default function ProviderInfo({
                 ? price
                 : "Request a personalized quote"}
             </Text>
-          </View>
+          </View> */}
         </View>
       </View>
     </View>

@@ -1,12 +1,17 @@
 import { View, Text, Image, FlatList, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { scale, verticalScale } from "../../adaptive/Adaptiveness";
-import { servicesData } from "../../data/shared/ServicesData";
-
+import servicesData from "../../data/shared/ServicesData";
+import { router } from "expo-router";
 const ServiceCard = ({ item }) => {
   return (
     <TouchableOpacity
-      onPress={() => {}}
+      onPress={() => {
+        router.push({
+          pathname: "/shared/serviceDetails",
+          params: { serviceId: item.id },
+        });
+      }}
       style={{ width: scale(330), height: verticalScale(288) }}
       className="bg-white mr-[0.5%]  border border-[#D4E0EB] justify-center items-start px-[3%]  rounded-xl shadow-sm overflow-hidden"
     >
@@ -92,12 +97,10 @@ export default function ServiceCards() {
         data={servicesData}
         renderItem={({ item }) => <ServiceCard item={item} />}
         keyExtractor={(item) => item.id}
-        horizontal={false}
+        horizontal
         showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          paddingBottom: verticalScale(100),
-          rowGap: verticalScale(12),
+          paddingRight: scale(80),
         }}
       />
     </View>

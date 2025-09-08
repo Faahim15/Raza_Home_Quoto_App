@@ -1,4 +1,4 @@
-export const servicesData = [
+const servicesData = [
   {
     id: 1,
     title: "Wallpaper on drawing room",
@@ -115,3 +115,30 @@ export const servicesData = [
     quoteOption: "Accept",
   },
 ];
+export const imagesData = [
+  {
+    id: "1",
+    image: require("../../../../../assets/images/home/jobs/summary1.png"),
+  },
+  {
+    id: "2",
+    image: require("../../../../../assets/images/home/jobs/summary2.png"),
+  },
+  {
+    id: "3",
+    image: require("../../../../../assets/images/home/jobs/summary1.png"),
+  },
+  {
+    id: "4",
+    image: require("../../../../../assets/images/home/jobs/summary2.png"),
+  },
+  {
+    id: "5",
+    image: require("../../../../../assets/images/home/jobs/summary1.png"),
+  },
+  {
+    id: "6",
+    image: require("../../../../../assets/images/home/jobs/summary1.png"),
+  },
+];
+export default servicesData;

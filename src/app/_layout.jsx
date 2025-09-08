@@ -22,10 +22,8 @@ export default function RootLayout() {
 
   return (
     <SafeAreaView className="flex-1 bg-[#F9FAFB]">
-      <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />;
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="index" />
-      </Stack>
+      <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
+      <Stack screenOptions={{ headerShown: false }} />
     </SafeAreaView>
   );
 }
