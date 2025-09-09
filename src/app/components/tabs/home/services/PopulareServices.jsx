@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { scale, verticalScale } from "../../../adaptive/Adaptiveness";
 import popularSeviceData from "../../../data/shared/PopularServiceData";
+import { router } from "expo-router";
 const screenWidth = Dimensions.get("window").width;
 const horizontalMargin = screenWidth * 0.12; // 6% left + 6% right
 const cardGap = scale(16); // total gap between cards (4% ~ 16px if scale = 4)
@@ -40,7 +41,9 @@ export default function PopularServices() {
         <Text className="font-poppins-semiBold text-base text-[#6B7280] ">
           Popular Services
         </Text>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => router.push("/services/popularServiceAll")}
+        >
           <Text className="font-poppins-semiBold text-base text-[#18649F] ">
             View all
           </Text>

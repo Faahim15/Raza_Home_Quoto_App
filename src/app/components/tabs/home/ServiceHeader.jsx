@@ -6,7 +6,14 @@ export default function ServiceHeader({ title }) {
       <Text className="font-poppins-semiBold text-base text-[#6B7280] ">
         {title}
       </Text>
-      <TouchableOpacity onPress={() => router.push("/services/showAllJobs")}>
+      <TouchableOpacity
+        onPress={() =>
+          router.push({
+            pathname: "/services/showAllJobs",
+            params: { title: title },
+          })
+        }
+      >
         <Text className="font-poppins-semiBold text-base text-[#18649F] ">
           View all
         </Text>

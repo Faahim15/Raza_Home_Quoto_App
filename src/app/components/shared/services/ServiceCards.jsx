@@ -3,7 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { scale, verticalScale } from "../../adaptive/Adaptiveness";
 import servicesData from "../../data/shared/ServicesData";
 import { router } from "expo-router";
-const ServiceCard = ({ item }) => {
+const ServiceCard = ({ item, showAddress }) => {
   return (
     <TouchableOpacity
       onPress={() => {
@@ -62,7 +62,7 @@ const ServiceCard = ({ item }) => {
               {item.serviceType}
             </Text>
           </View>
-          {/* {showAddress && (
+          {showAddress && (
             <Text
               className="font-poppins-400regular text-sm text-[#319FCA]"
               numberOfLines={1}
@@ -72,30 +72,33 @@ const ServiceCard = ({ item }) => {
                 ? item.price
                 : "Requested a personalized..."}
             </Text>
-          )} */}
+          )}
         </View>
 
         {/* Location and Time */}
-
-        {/* <View className="flex-row items-center mb-[0%]">
+        {showAddress && (
+          <View className="flex-row items-center mb-[0%]">
             <Ionicons name="location-outline" size={16} color="#319FCA" />
-          
-           <Text className="font-poppins-400regular text-sm text-[#319FCA]">
+
+            <Text className="font-poppins-400regular text-sm text-[#319FCA]">
               {item.address}
               <Text className="text-[#6B7280]"> | {item.timeAgo}</Text>
             </Text>
-         </View> */}
+          </View>
+        )}
       </View>
     </TouchableOpacity>
   );
 };
 
-export default function ServiceCards() {
+export default function ServiceCards({ showAddress }) {
   return (
     <View className="mt-[2%] justify-center mx-[6%]  items-start   ">
       <FlatList
         data={servicesData}
-        renderItem={({ item }) => <ServiceCard item={item} />}
+        renderItem={({ item }) => (
+          <ServiceCard showAddress={showAddress} item={item} />
+        )}
         keyExtractor={(item) => item.id}
         horizontal
         showsHorizontalScrollIndicator={false}

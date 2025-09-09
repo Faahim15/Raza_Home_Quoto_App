@@ -10,6 +10,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { scale, verticalScale } from "../../../adaptive/Adaptiveness";
 const { width } = Dimensions.get("window");
 import servicesData from "../../../data/shared/ServicesData";
+import { router } from "expo-router";
 const cardWidth = width * 0.45;
 
 export default function ServiceProvider() {
@@ -45,12 +46,7 @@ export default function ServiceProvider() {
         </View>
 
         <TouchableOpacity
-          onPress={() =>
-            navigation.navigate("ProviderDetailsScreen", {
-              showBook: true,
-              provider: item,
-            })
-          }
+          onPress={() => router.push("/services/providerDetails")}
           style={{ width: scale(124), height: verticalScale(25) }}
           className="bg-[#0054A5] border border-[#0054A5] mt-[3%] rounded-md py-[3%] px-[3%]"
         >
@@ -68,7 +64,9 @@ export default function ServiceProvider() {
         <Text className="font-poppins-semiBold text-base text-[#6B7280]">
           Popular Service Providers
         </Text>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => router.push("/services/providerViewAll")}
+        >
           <Text className="font-poppins-semiBold text-base text-[#18649F]">
             View all
           </Text>
