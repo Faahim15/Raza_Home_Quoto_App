@@ -14,6 +14,5 @@ export const verticalScale = (size) => (height / BASE_HEIGHT) * size;
 
 export const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } =
   Dimensions.get("window");
-
-const w = 375;
+const w = (size) => (width / BASE_WIDTH) * size;
 export default w;

@@ -1,5 +1,6 @@
 import { View, Text, Image } from "react-native";
 import CustomButton from "../components/onboarding/CustomButton";
+import { router } from "expo-router";
 export default function WelcomeToQuotoScreen() {
   return (
     <View className="flex-1 items-center bg-[#F9FAFB]">
@@ -18,7 +19,13 @@ export default function WelcomeToQuotoScreen() {
           Join As
         </Text>
       </View>
-      <CustomButton onPress={() => {}} marginTop={24} title="Client" />
+      <CustomButton
+        onPress={() => {
+          router.push("/signIn");
+        }}
+        marginTop={24}
+        title="Client"
+      />
       <CustomButton
         title="Provider"
         onPress={() => {}}

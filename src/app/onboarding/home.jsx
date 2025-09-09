@@ -12,6 +12,7 @@ import UserSelectionButtons from "../components/onboarding/ChoiceButton";
 import XStyle from "../util/styles";
 import ServiceCards from "../components/shared/services/ServiceCards";
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 export default function OnboardingHomeScreen() {
   return (
     <View className="flex-1 bg-[#F9FAFB] ">
@@ -69,7 +70,12 @@ export default function OnboardingHomeScreen() {
         className=" mt-[2%] justify-center items-center border border-[#D4E0EB] px-[6.4%] py-[9%]"
       >
         <View className="flex-row gap-[4%]">
-          <UserSelectionButtons onPress={() => {}} title="Join as Client" />
+          <UserSelectionButtons
+            onPress={() => {
+              router.push("/signIn");
+            }}
+            title="Join as Client"
+          />
           <UserSelectionButtons
             title="Join as Provider"
             onPress={() => {}}
@@ -82,7 +88,9 @@ export default function OnboardingHomeScreen() {
 
         <View className="">
           <Pressable
-            onPress={() => {}}
+            onPress={() => {
+              router.replace("/onboarding/welcome");
+            }}
             style={{
               width: scale(280),
               height: scale(42),
