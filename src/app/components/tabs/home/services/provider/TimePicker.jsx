@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native";
-
+import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 export default function TimePicker() {
   return (
@@ -9,7 +9,7 @@ export default function TimePicker() {
       </Text>
 
       <TouchableOpacity
-        onPress={() => {}}
+        onPress={() => router.push("/services/calenderBooking")}
         className="flex-row items-center gap-[3%] "
       >
         <Ionicons name="time-outline" color="#319FCA" size={20} />

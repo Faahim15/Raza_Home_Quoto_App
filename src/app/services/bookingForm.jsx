@@ -28,7 +28,7 @@ export default function BookProviderScreen() {
 
         {/* continue button */}
         <View className="mt-[3%]">
-          <CustomButton route="BookingDetailsScreen" title="Continue" />
+          <CustomButton onPress={() => {}} title="Continue" />
         </View>
       </View>
     </View>
