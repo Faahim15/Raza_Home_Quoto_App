@@ -7,6 +7,7 @@ import ButtonGroup from "../components/tabs/home/services/provider/ButtonGroup";
 import InstructionField from "../components/tabs/home/services/provider/InstructionField";
 import PriceSlider from "../components/tabs/home/PriceInput";
 import RequestButton from "../components/tabs/home/services/provider/RequestButton";
+import { router } from "expo-router";
 export default function BookProviderScreen() {
   return (
     <View className="flex-1  bg-[#F9F9F9]">
@@ -28,7 +29,10 @@ export default function BookProviderScreen() {
 
         {/* continue button */}
         <View className="mt-[3%]">
-          <CustomButton onPress={() => {}} title="Continue" />
+          <CustomButton
+            onPress={() => router.push("/services/bookingSummary")}
+            title="Continue"
+          />
         </View>
       </View>
     </View>

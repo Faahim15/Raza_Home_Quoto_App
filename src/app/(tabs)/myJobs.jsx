@@ -1,10 +1,9 @@
-import { View, Text } from "react-native";
-import React from "react";
-
-export default function myJobs() {
+import { View } from "react-native";
+import ServiceCard from "../components/tabs/myJobs/ServiceCard";
+export default function SelectServiceScreen() {
   return (
-    <View>
-      <Text>myJobs</Text>
+    <View className="flex-1 bg-[#f9f9f9]">
+      <ServiceCard />
     </View>
   );
 }

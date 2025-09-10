@@ -4,7 +4,7 @@ import LottieView from "lottie-react-native";
 import { scale, verticalScale } from "../../adaptive/Adaptiveness";
 import { router } from "expo-router";
 
-const SuccessModal = ({ visible, onClose }) => {
+const SuccessModal = ({ visible, onClose, modalHeader }) => {
   return (
     <Modal
       animationType="fade"
@@ -37,13 +37,13 @@ const SuccessModal = ({ visible, onClose }) => {
 
           {/* Title */}
           <Text className="text-2xl font-poppins-bold  text-black mb-[3%] text-center">
-            Password Updated Successfully
+            {modalHeader?.title || "Password Updated Successfully"}
           </Text>
 
           {/* Subtitle */}
           <Text className="text-xs font-poppins text-[#50555C] text-center mb-[8%] leading-5 px-[4%]">
-            Your new password is now active. You can sign in securely and
-            continue exploring.
+            {modalHeader?.subtitle ||
+              "Your new password is now active. You can sign in securely and continue exploring."}
           </Text>
 
           {/* Thank You Button */}
