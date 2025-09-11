@@ -7,28 +7,18 @@ export default function BotttomButtons({
   borderColor,
   color,
   width = 148,
-  path,
+  onPress,
 }) {
-  const navigation = useNavigation();
-
-  const handlePress = () => {
-    // if (typeof path === "string") {
-    //   navigation.navigate(path);
-    // } else {
-    //   navigation.navigate(path.name, path.params);
-    // }
-  };
-
   return (
     <Pressable
-      onPress={handlePress}
+      onPress={onPress}
       style={{
         width: scale(width),
         backgroundColor: backgroundColor,
         borderColor: borderColor,
         borderWidth: scale(1),
       }}
-      className="justify-center  rounded-md items-center px-[3%] py-[3%] "
+      className=" justify-center  rounded-md items-center px-[3%] py-[3%] "
     >
       <Text style={{ color: color }} className="font-poppins-bold text-base  ">
         {title}

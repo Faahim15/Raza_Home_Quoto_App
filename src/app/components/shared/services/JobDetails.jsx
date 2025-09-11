@@ -17,7 +17,7 @@ function showImages({ item }) {
     </View>
   );
 }
-export default function ProviderInfo({ serviceData }) {
+export default function ProviderInfo({ serviceData, showPrice = false }) {
   const {
     price,
     profileImage,
@@ -153,16 +153,18 @@ export default function ProviderInfo({ serviceData }) {
             </View>
           </View>
           {/* Price and Time */}
-          {/* <View className="flex-row pt-[1%] justify-between">
-            <Text className="font-poppins-400regular text-base text-[#1F2937]">
-              Price
-            </Text>
-            <Text className="text-[#F59E0B] text-base font-poppins-semiBold">
-              {quoteOption === "Accept"
-                ? price
-                : "Request a personalized quote"}
-            </Text>
-          </View> */}
+          {showPrice && (
+            <View className="flex-row pt-[1%] justify-between">
+              <Text className="font-poppins-400regular text-base text-[#1F2937]">
+                Price
+              </Text>
+              <Text className="text-[#F59E0B] text-base font-poppins-semiBold">
+                {quoteOption === "Accept"
+                  ? price
+                  : "Request a personalized quote"}
+              </Text>
+            </View>
+          )}
         </View>
       </View>
     </View>

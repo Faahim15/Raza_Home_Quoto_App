@@ -3,34 +3,7 @@ import { scale, verticalScale } from "../../adaptive/Adaptiveness";
 import XStyle from "../../../util/styles";
 import PaymentChecklist from "./PaymentCheckList";
 import imageData from "../../data/shared/Images";
-//{ width: scale(327), height: verticalScale(633) }
 
-// const imagesData = [
-//   {
-//     id: "1",
-//     image: require("../../../../../assets/images/home/jobs/summary1.png"),
-//   },
-//   {
-//     id: "2",
-//     image: require("../../../../../assets/images/home/jobs/summary2.png"),
-//   },
-//   {
-//     id: "3",
-//     image: require("../../../../../assets/images/home/jobs/summary2.png"),
-//   },
-//   {
-//     id: "4",
-//     image: require("../../../../../assets/images/home/jobs/summary2.png"),
-//   },
-//   {
-//     id: "5",
-//     image: require("../../../../../assets/images/home/jobs/summary1.png"),
-//   },
-//   {
-//     id: "6",
-//     image: require("../../../../../assets/images/home/jobs/summary1.png"),
-//   },
-// ];
 function showImages({ item }) {
   return (
     <View>

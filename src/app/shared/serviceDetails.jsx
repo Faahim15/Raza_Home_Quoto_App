@@ -6,11 +6,31 @@ import XStyle from "../util/styles";
 import { scale, verticalScale } from "../components/adaptive/Adaptiveness";
 import BotttomButtons from "../components/shared/services/buttons/BottomButtons";
 import CustomButton from "../components/shared/services/buttons/ServiceButton";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import servicesData from "../components/data/shared/ServicesData";
 export default function ServiceDetails() {
-  const { serviceId } = useLocalSearchParams();
+  const { serviceId, showButtons } = useLocalSearchParams();
   const service = servicesData.find((s) => s.id.toString() === serviceId);
+  const renderButton =
+    service.quoteOption === "Send a Personalized Quote" ? (
+      <BotttomButtons
+        onPress={() => router.push("/provider/quote/updateQuote")}
+        backgroundColor="#fff"
+        color="#175994"
+        borderColor="#175994"
+        title="  Send an updated offer"
+        width="full"
+      />
+    ) : (
+      <BotttomButtons
+        onPress={() => router.push("/provider/home")}
+        backgroundColor="#fff"
+        color="#175994"
+        borderColor="#175994"
+        title="Accept"
+        width={148}
+      />
+    );
 
   return (
     <View className="flex-1 bg-[#F9F9F9]">
@@ -21,7 +41,7 @@ export default function ServiceDetails() {
           showsVerticalScrollIndicator={false}
         >
           <View>
-            <ProviderInfo serviceData={service} />
+            <ProviderInfo showPrice={showButtons} serviceData={service} />
           </View>
           {/* {showCompleteJob && (
             <View className="mt-[8%] ">
@@ -30,7 +50,7 @@ export default function ServiceDetails() {
           )} */}
         </ScrollView>
       </View>
-      {/* {showButtons && (
+      {showButtons && (
         <View
           className="flex-col gap-[6%]   border border-[#D8DCE0]  "
           style={[
@@ -38,35 +58,38 @@ export default function ServiceDetails() {
             {
               borderTopRightRadius: scale(20),
               borderTopLeftRadius: scale(20),
-              height: verticalScale(verticalHeight),
+              height: verticalScale(140),
             },
           ]}
         >
           <View className="flex-row gap-[6%]  justify-center overflow-hidden items-center ">
             <BotttomButtons
-              path="ContractorBottomTabs"
+              onPress={() => {
+                router.replace("/provider/home");
+              }}
               backgroundColor="#fff"
               color="#EF4444"
               borderColor="#EF4444"
               title="Cancel"
-              width={width}
+              width={
+                service.quoteOption === "Send a Personalized Quote"
+                  ? "full"
+                  : 148
+              }
             />
-            <BotttomButtons
-              path={path}
-              backgroundColor="#fff"
-              color="#175994"
-              borderColor="#175994"
-              title={titleText}
-              width={width}
-            />
+
+            {renderButton}
           </View>
-          {titleText === "Accept" && (
+          {service.quoteOption !== "Send a Personalized Quote" && (
             <View className="px-[3%]">
-              <CustomButton route="UpdateQuoteScreen" title="Update Quote" />
+              <CustomButton
+                onPress={() => router.push("/provider/quote/updateQuote")}
+                title="Update Quote"
+              />
             </View>
           )}
         </View>
-      )} */}
+      )}
       {/* {AllReq && (
         <View className="px-[6%] pb-[8%]">
           <CustomButton route="JobFormScreen" title="Edit Job" />

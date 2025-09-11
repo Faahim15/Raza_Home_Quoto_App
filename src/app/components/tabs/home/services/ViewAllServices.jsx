@@ -9,7 +9,7 @@ const ServiceCard = ({ item }) => {
       onPress={() => {
         router.push({
           pathname: "/shared/serviceDetails",
-          params: { serviceId: item.id },
+          params: { serviceId: item.id, showButtons: true },
         });
       }}
       style={{ width: scale(330), height: verticalScale(288) }}
@@ -51,10 +51,22 @@ const ServiceCard = ({ item }) => {
         </View>
 
         {/* Service Type */}
-        <View className="flex-row gap-[2%] items-center mb-[2%]">
-          <Ionicons name="construct-outline" size={16} color="#6B7280" />
-          <Text className="font-poppins-400regular text-sm text-[#6B7280] ">
-            {item.serviceType}
+        <View className="flex-row w-full justify-between items-center mb-[2%]">
+          <View className="flex-row gap-[2%] items-center">
+            <Ionicons name="construct-outline" size={16} color="#6B7280" />
+            <Text className="font-poppins-400regular text-sm text-[#6B7280] ">
+              {item.serviceType}
+            </Text>
+          </View>
+
+          <Text
+            className="font-poppins-400regular text-sm text-[#319FCA]"
+            numberOfLines={1}
+            ellipsizeMode="tail"
+          >
+            {item.quoteOption === "Accept"
+              ? item.price
+              : "Requested a personalized..."}
           </Text>
         </View>
 
