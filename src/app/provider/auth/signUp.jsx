@@ -141,7 +141,7 @@ export default function SignUp() {
               className="bg-[#0054A5]  rounded-lg justify-center items-center py-[4%]"
               disabled={!agreeToTerms}
               style={{ opacity: agreeToTerms ? 1 : 0.6 }}
-              onPress={() => router.push("provider/auth/signIn")}
+              onPress={() => router.push("provider/auth/serviceForm")}
             >
               <Text className="text-white text-center text-base font-poppins-semiBold">
                 Sign up

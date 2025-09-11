@@ -13,7 +13,7 @@ export default function ResetPasswordScreen() {
     if (showModal) {
       const timer = setTimeout(() => {
         setShowModal(false);
-        router.push("/signIn");
+        router.push("/onboarding/loginChoice");
       }, 3000); // 3 seconds
 
       return () => clearTimeout(timer); // cleanup

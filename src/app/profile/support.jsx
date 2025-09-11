@@ -57,11 +57,12 @@ export default function SupportScreen() {
             </Text>
 
             <TextInput
-              className="text-black font-poppins-400regular bg-[#fff] border rounded-md border-[#CACACA] py-[14%] px-[2%] mt-[2%]"
+              className="text-black font-poppins-400regular bg-[#fff] border rounded-md border-[#CACACA]  px-[3%] mt-[2%]"
               placeholder="Write here.."
               placeholderTextColor="#898989"
               multiline
               textAlignVertical="top"
+              style={{ minHeight: verticalScale(120) }}
             />
           </View>
         </View>

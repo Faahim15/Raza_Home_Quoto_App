@@ -78,7 +78,7 @@ export default function OnboardingHomeScreen() {
           />
           <UserSelectionButtons
             title="Join as Provider"
-            onPress={() => {}}
+            onPress={() => router.push("/provider/auth/signUp")}
             backgroundColor="#fff"
             textColor="#175994"
           />

@@ -14,7 +14,7 @@ export default function AccountSettingScreen() {
 
   const handleYes = () => {
     setModalVisible(false);
-    router.replace("/signUp");
+    router.replace("onboarding/loginChoice");
   };
 
   const handleNo = () => {
