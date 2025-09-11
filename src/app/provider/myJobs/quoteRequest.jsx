@@ -3,7 +3,7 @@ import CustomTitle from "../../components/shared/CustomTitle";
 import JobSummary from "../../components/tabs/jobs/JobSummary";
 import XStyle from "../../util/styles";
 import BotttomButtons from "../../components/shared/services/buttons/BottomButtons";
-import { scale, verticalScale } from "../../components/adaptive/Adaptiveness";
+import { scale } from "../../components/adaptive/Adaptiveness";
 import { useLocalSearchParams } from "expo-router";
 import serviceData from "../../components/data/provider/MyJobsData";
 import { router } from "expo-router";
