@@ -11,7 +11,7 @@ export default function WorkingHoursScreen() {
       <TimeRangePicker />
       <View className=" flex-1 px-[2%]">
         <FormButton
-          onPress={() => router.replace("/provider/auth/signIn")}
+          onPress={() => router.replace("/provider/auth/licenceVerify")}
           title="Next"
         />
       </View>
