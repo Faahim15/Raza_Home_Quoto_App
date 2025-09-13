@@ -1,6 +1,14 @@
-import { View, Image, Text, TouchableOpacity, FlatList } from "react-native";
+import {
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  Pressable,
+} from "react-native";
 import { scale, verticalScale } from "../../adaptive/Adaptiveness";
 import QuoteReqData from "../../data/jobs/QuotesData";
+import { router } from "expo-router";
 // Updated ServiceItem component with navigation
 const ServiceItem = ({ item, navigation }) => {
   const serviceColors = {
@@ -21,7 +29,7 @@ const ServiceItem = ({ item, navigation }) => {
   return (
     <View className="mx-[4%] mb-[4%]">
       {/* Service Type Banner - Made clickable */}
-      <TouchableOpacity
+      <Pressable
         style={{
           borderTopLeftRadius: scale(8),
           borderTopRightRadius: scale(8),
@@ -35,7 +43,7 @@ const ServiceItem = ({ item, navigation }) => {
         </Text>
 
         {/* <Ionicons name="arrow-forward" size={16} color="#fff" /> */}
-      </TouchableOpacity>
+      </Pressable>
 
       <View
         style={{
@@ -48,9 +56,9 @@ const ServiceItem = ({ item, navigation }) => {
           {/* Profile Image */}
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate("SelectedProviderDetailsScreen", {
-                provider: item,
-                showButtons: true,
+              router.push({
+                pathname: "/services/providerDetails",
+                params: { showButtons: true },
               })
             }
             style={{ width: scale(80), height: verticalScale(80) }}
@@ -91,12 +99,11 @@ const ServiceItem = ({ item, navigation }) => {
               </Text>
             </View>
             <TouchableOpacity
-              onPress={
-                () => {}
-                // navigation.navigate("QuoteDetailsScreen", {
-                //   provider: item,
-                //   showButtons: true,
-                // })
+              onPress={() =>
+                router.push({
+                  pathname: "myJobs/quotesDetails",
+                  params: { seviceId: item.id },
+                })
               }
               style={{ width: scale(120), height: verticalScale(30) }}
               className={` justify-center items-center  mt-[3%] rounded-md py-[2%] px-[2%] ${serviceColors[item?.serviceType] || "bg-[#0054A5]"} `}

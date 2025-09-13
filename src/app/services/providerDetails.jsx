@@ -2,6 +2,7 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { scale, verticalScale } from "../components/adaptive/Adaptiveness";
 import ArrowBack from "../components/auth/ArrowBack";
+import BotttomButtons from "../components/shared/services/buttons/BottomButtons";
 import CustomButton from "../components/tabs/home/services/provider/details/CustomButton";
 import TimeSlot from "../components/tabs/home/services/provider/details/TimeSlot";
 import Gallery from "../components/tabs/home/services/provider/details/Gallery";
@@ -11,11 +12,11 @@ import Skills from "../components/tabs/home/services/provider/details/Skills";
 import Testimonials from "../components/tabs/home/services/provider/details/Testimonials";
 import ReviewButton from "../components/tabs/home/services/provider/details/ReviewButton";
 import Biography from "../components/tabs/home/services/provider/details/Biography";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
+import XStyle from "../util/styles";
 export default function ProviderDetailsScreen() {
   const skills = ["Lighting", "Circuit", "Wiring", "Repair"];
-  //   const navigation = useNavigation();
-  // const provider = route.params.provider;
+  const { showButtons } = useLocalSearchParams();
   return (
     <View className="flex-1 bg-white">
       <ScrollView
@@ -63,10 +64,11 @@ export default function ProviderDetailsScreen() {
 
         {/* Book button */}
         <View className="px-[6%]">
-          <CustomButton
-            onPress={() => router.push("/services/bookingForm")}
-            title="Book"
-          />
+          {!showButtons && (
+            <View className="px-[6%]">
+              <CustomButton route="BookProviderScreen" title="Book" />
+            </View>
+          )}
         </View>
         {/* Time Solt */}
         <View className="mx-[6%] mt-[3%] ">
@@ -112,6 +114,30 @@ export default function ProviderDetailsScreen() {
         {/* Review Button */}
         <ReviewButton />
       </ScrollView>
+      {/* {showButtons && (
+        <View
+          className="flex-row gap-[6%] h-[14%]  border border-[#D8DCE0] justify-center items-center "
+          style={[
+            XStyle.shadowBox,
+            { borderTopRightRadius: scale(20), borderTopLeftRadius: scale(20) },
+          ]}
+        >
+          <BotttomButtons
+            onPress={() => router.back()}
+            backgroundColor="#fff"
+            color="#EF4444"
+            borderColor="#EF4444"
+            title="Decline"
+          />
+          <BotttomButtons
+            onPress={() => router.back()}
+            backgroundColor="#18649F"
+            color="#fff"
+            borderColor="#18649F"
+            title="Accept"
+          />
+        </View>
+      )} */}
     </View>
   );
 }
