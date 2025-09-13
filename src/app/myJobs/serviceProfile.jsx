@@ -13,14 +13,23 @@ import Testimonials from "../components/tabs/home/services/provider/details/Test
 import ReviewButton from "../components/tabs/home/services/provider/details/ReviewButton";
 import Biography from "../components/tabs/home/services/provider/details/Biography";
 import { router, useLocalSearchParams } from "expo-router";
+import QuoteReqData from "../components/data/jobs/QuotesData";
 import XStyle from "../util/styles";
 export default function ProviderDetailsScreen() {
   const skills = ["Lighting", "Circuit", "Wiring", "Repair"];
-  const { showButtons } = useLocalSearchParams();
-  const shouldShowButtons = showButtons === "true";
+  const { showButtons, serviceId } = useLocalSearchParams();
 
+  const item = QuoteReqData.find((s) => s.id.toString() === serviceId);
+
+  const shouldShowButtons = showButtons === "true";
+  const serviceColors = {
+    "TV repair and Installation": "bg-[#319FCA]",
+    "AC Repair and Maintenance": "bg-[#FF6B6B]",
+    "Plumbing Services": "bg-[#10B981]",
+    "Electrical Repair": "bg-[#8B5CF6]",
+  };
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1 w-full bg-white">
       <ScrollView
         contentContainerStyle={{ paddingBottom: verticalScale(40) }}
         className="flex-1 "
@@ -66,14 +75,14 @@ export default function ProviderDetailsScreen() {
 
         {/* Book button */}
 
-        {!shouldShowButtons && (
+        {/* {!shouldShowButtons && (
           <View className="px-[6%]">
             <CustomButton
               onPress={() => router.push("/services/bookingForm")}
               title="Book"
             />
           </View>
-        )}
+        )} */}
 
         {/* Time Solt */}
         <View className="mx-[6%] mt-[3%] ">
@@ -121,26 +130,25 @@ export default function ProviderDetailsScreen() {
       </ScrollView>
       {shouldShowButtons && (
         <View
-          className="flex-row gap-[6%] h-[14%]  border border-[#D8DCE0] justify-center items-center "
+          className="flex-row w-full gap-[6%] h-[10%]  border border-[#D8DCE0] justify-center items-center "
           style={[
             XStyle.shadowBox,
-            { borderTopRightRadius: scale(20), borderTopLeftRadius: scale(20) },
+            {
+              borderTopRightRadius: scale(20),
+              width: "100%",
+              borderTopLeftRadius: scale(20),
+            },
           ]}
         >
-          <BotttomButtons
-            onPress={() => router.back()}
-            backgroundColor="#fff"
-            color="#EF4444"
-            borderColor="#EF4444"
-            title="Decline"
-          />
-          <BotttomButtons
-            onPress={() => router.back()}
-            backgroundColor="#18649F"
-            color="#fff"
-            borderColor="#18649F"
-            title="Accept"
-          />
+          <TouchableOpacity
+            onPress={() => {}} //navigation.navigate("WaitConfirmationScreen")
+            style={{ width: "100%", height: verticalScale(40) }}
+            className={` justify-center items-center  mt-[3%] rounded-md py-[2%] px-[2%] ${serviceColors[item?.serviceType] || "bg-[#0054A5]"} `}
+          >
+            <Text className=" font-poppins-bold   text-white text-base ">
+              Pay Hand Cash
+            </Text>
+          </TouchableOpacity>
         </View>
       )}
     </View>

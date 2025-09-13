@@ -10,7 +10,7 @@ import { scale, verticalScale } from "../../adaptive/Adaptiveness";
 import QuoteReqData from "../../data/jobs/QuotesData";
 import { router } from "expo-router";
 // Updated ServiceItem component with navigation
-const ServiceItem = ({ item, navigation }) => {
+const ServiceItem = ({ item }) => {
   const serviceColors = {
     "TV repair and Installation": "bg-[#319FCA]",
     "AC Repair and Maintenance": "bg-[#FF6B6B]",
@@ -102,7 +102,7 @@ const ServiceItem = ({ item, navigation }) => {
               onPress={() =>
                 router.push({
                   pathname: "myJobs/quotesDetails",
-                  params: { seviceId: item.id },
+                  params: { serviceId: item.id },
                 })
               }
               style={{ width: scale(120), height: verticalScale(30) }}

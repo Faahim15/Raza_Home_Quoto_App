@@ -19,6 +19,7 @@ const QuoteReqData = [
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
     status: "In Progress",
     quoteOption: "Accept",
+    sentQuote: false,
   },
   {
     id: 2,
@@ -43,8 +44,9 @@ const QuoteReqData = [
     address: "Ottawa, ON",
     profileImage:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-    status: "Completed",
+    status: "In Progress",
     quoteOption: "Accept",
+    sentQuote: true,
   },
   {
     id: 3,

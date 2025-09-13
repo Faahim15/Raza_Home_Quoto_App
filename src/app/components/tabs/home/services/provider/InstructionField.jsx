@@ -5,6 +5,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
+import { verticalScale } from "../../../../adaptive/Adaptiveness";
 
 export default function InstructionField() {
   return (
@@ -18,11 +19,12 @@ export default function InstructionField() {
         </Text>
 
         <TextInput
-          className="text-black font-poppins-400regular bg-[#f9f9f9] border  rounded-md border-[#CACACA] py-[4%] px-[2%] mt-[2%] "
+          className="text-black font-poppins-400regular bg-[#f9f9f9] border  rounded-md border-[#CACACA] px-[2%] mt-[2%] "
           placeholder="Write here.."
           placeholderTextColor="#898989"
           multiline
           textAlignVertical="top"
+          style={{ minHeight: verticalScale(100) }}
         />
       </View>
     </KeyboardAvoidingView>
