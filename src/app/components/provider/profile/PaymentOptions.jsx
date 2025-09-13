@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { scale, verticalScale } from "../../adaptive/Adaptiveness";
-export const PaymentMethodCard = ({
+const PaymentMethodCard = ({
   id,
   title,
   icon,
@@ -60,3 +60,4 @@ export const AddNewCardButton = ({ onPress, title = "Add new card" }) => {
     </TouchableOpacity>
   );
 };
+export default PaymentMethodCard;

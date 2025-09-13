@@ -2,6 +2,10 @@ import { View, Text } from "react-native";
 import CustomTitle from "../../components/shared/CustomTitle";
 import VerifyHeader from "../../components/provider/auth/VerifyHeader";
 import Uploader from "../../components/provider/auth/Uploader";
+import LicenceHeader from "../../components/provider/auth/LicenceHeader";
+import ImageSelector from "../../components/shared/imagePicker/ImagePicker";
+import CustomButton from "../../components/onboarding/CustomButton";
+import { router } from "expo-router";
 
 export default function licenceUpload() {
   return (
@@ -14,17 +18,26 @@ export default function licenceUpload() {
             subTitle="Please upload your valid business license and a clear photo of your government-issued ID."
           />
         </View>
-        <View>
-          <Uploader
-            title="Upload Your Business License"
-            subtitle="Supported File Types: PDF, JPG, PNG"
+
+        <Uploader
+          title="Upload Your Business License"
+          subtitle="Supported File Types: PDF, JPG, PNG"
+        />
+
+        <View className="mt-[8%]">
+          <LicenceHeader
+            title="Upload a clear photo"
+            subtitle="Supported File Types: JPG, JPEG, PNG"
           />
-          <Uploader
-            title="Upload a clear photoe"
-            subtitle="Supported File Types: PDF, JPG, PNG"
-          />
+          <View className="flex-1 mt-[2%]">
+            <ImageSelector />
+          </View>
         </View>
       </View>
+      <CustomButton
+        onPress={() => router.push("/provider/auth/validation")}
+        title="Continue"
+      />
     </View>
   );
 }

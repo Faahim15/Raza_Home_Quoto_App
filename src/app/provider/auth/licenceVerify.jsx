@@ -34,6 +34,7 @@ export default function licenceVerify() {
             Complete your verification now to be able to start accepting jobs.
           </Text>
           <CustomButton
+            onPress={() => router.replace("/provider/home")}
             color="#175994"
             backgroundColor="#fff"
             marginTop={15}

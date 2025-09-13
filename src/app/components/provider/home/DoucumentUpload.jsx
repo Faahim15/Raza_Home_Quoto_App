@@ -74,7 +74,7 @@ const ServiceDocumentUpload = ({
   };
 
   return (
-    <View className="w-full ">
+    <View className="w-full  ">
       {/* Header */}
       {title && (
         <Text className=" font-poppins-400regular text-base  text-[#1F2937] ">
@@ -83,7 +83,7 @@ const ServiceDocumentUpload = ({
       )}
 
       {/* Alternative: Simple File Row (like your image) */}
-      <View className="w-full mt-[2%]">
+      <View className="w-full  mt-[2%]">
         <View
           style={{ backgroundColor: backgroundColor }}
           className="w-full   border border-[#DCDCDC] rounded-lg"
