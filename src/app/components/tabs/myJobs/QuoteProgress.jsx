@@ -135,18 +135,11 @@ const ServiceItem = ({ item }) => {
                 </TouchableOpacity>
               )}
               <TouchableOpacity
-                onPress={
-                  () => {}
-                  //   navigation.navigate("ProgressDetailsScreen", {
-                  //     provider: item,
-                  //     titles: {
-                  //       title1: "Pay Now",
-                  //       title2: "Complete",
-                  //       payNowColor: "#175994",
-                  //     },
-                  //     showButtons: item.status === "Completed" ? false : true,
-                  //     showStatus: item.status === "Completed" ? false : true,
-                  //   })
+                onPress={() =>
+                  router.push({
+                    pathname: "/myJobs/progressQuote",
+                    params: { serviceId: item.id },
+                  })
                 }
                 style={{ width: scale(120), height: verticalScale(30) }}
                 className={` justify-center items-center  mt-[3%] rounded-md py-[2%] px-[2%] ${serviceColors[item?.serviceType] || "bg-[#0054A5]"} `}

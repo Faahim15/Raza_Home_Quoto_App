@@ -1,8 +1,15 @@
-import { Text, View, TouchableOpacity, Image, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  Pressable,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { scale, verticalScale } from "../../adaptive/Adaptiveness";
 import { router } from "expo-router";
-export default function QuoteReqDetails({ item }) {
+export default function QuoteReqDetails({ item, showStatus = false }) {
   const serviceColors = {
     "TV repair and Installation": "bg-[#319FCA]",
     "AC Repair and Maintenance": "bg-[#FF6B6B]",
@@ -103,17 +110,43 @@ export default function QuoteReqDetails({ item }) {
           <View>
             {/* Job Status */}
 
-            {/* <View className=" mt-[5%]">
-              <Text className="font-poppins-500medium pb-[2%] border-b border-[#DCDCDC] text-sm text-black">
-                Job Status
-              </Text>
+            {!showStatus && (
+              <View className=" mt-[5%]">
+                <Text className="font-poppins-500medium pb-[2%] border-b border-[#DCDCDC] text-sm text-black">
+                  Job Status
+                </Text>
 
-              <Text
-                className={`font-poppins-400regular mt-[10%] text-center text-base ${item.status === "In Progress" ? "text-[#1A73E8]" : item.status === "Completed" ? "text-[#00BFA5]" : "text-[#D32F2F]"} `}
-              >
-                {item.status}
+                <Text
+                  className={`font-poppins-400regular mt-[10%] text-center text-base ${item.status === "In Progress" ? "text-[#1A73E8]" : item.status === "Completed" ? "text-[#00BFA5]" : "text-[#D32F2F]"} `}
+                >
+                  {item.status}
+                </Text>
+              </View>
+            )}
+
+            <View className=" mt-[3%] justify-center items-center">
+              <Text className="font-poppins-400regular text-xs text-[#F59E0B] ">
+                Sent an updated quote!
               </Text>
-            </View> */}
+              <View className="mt-[3%] flex-row gap-[4%]">
+                <Pressable
+                  style={{ width: "35%" }}
+                  className="px-[3%] py-[2%] rounded-md border border-[#EF4444]"
+                >
+                  <Text className="text-[#EF4444] text-center font-poppins text-xs ">
+                    Decline
+                  </Text>
+                </Pressable>
+                <Pressable
+                  style={{ width: "35%" }}
+                  className="px-[3%] py-[2%] rounded-md border border-[#F59E0B]"
+                >
+                  <Text className="text-[#F59E0B] text-center font-poppins text-xs ">
+                    Approve offer
+                  </Text>
+                </Pressable>
+              </View>
+            </View>
 
             {/* Appointment */}
             <View className="mt-[5%]">

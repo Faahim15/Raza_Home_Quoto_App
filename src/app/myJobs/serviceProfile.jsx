@@ -2,8 +2,6 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { scale, verticalScale } from "../components/adaptive/Adaptiveness";
 import ArrowBack from "../components/auth/ArrowBack";
-import BotttomButtons from "../components/shared/services/buttons/BottomButtons";
-import CustomButton from "../components/tabs/home/services/provider/details/CustomButton";
 import TimeSlot from "../components/tabs/home/services/provider/details/TimeSlot";
 import Gallery from "../components/tabs/home/services/provider/details/Gallery";
 import Banner from "../components/tabs/home/services/provider/details/Banner";
@@ -15,12 +13,14 @@ import Biography from "../components/tabs/home/services/provider/details/Biograp
 import { router, useLocalSearchParams } from "expo-router";
 import QuoteReqData from "../components/data/jobs/QuotesData";
 import XStyle from "../util/styles";
+import PaymentMethodModal from "../components/shared/modal/PaymentMethodModal";
+import { useState } from "react";
 export default function ProviderDetailsScreen() {
   const skills = ["Lighting", "Circuit", "Wiring", "Repair"];
   const { showButtons, serviceId } = useLocalSearchParams();
 
   const item = QuoteReqData.find((s) => s.id.toString() === serviceId);
-
+  const [showPayment, setShowPayment] = useState(false);
   const shouldShowButtons = showButtons === "true";
   const serviceColors = {
     "TV repair and Installation": "bg-[#319FCA]",
@@ -141,16 +141,20 @@ export default function ProviderDetailsScreen() {
           ]}
         >
           <TouchableOpacity
-            onPress={() => {}} //navigation.navigate("WaitConfirmationScreen")
+            onPress={() => setShowPayment(true)} //navigation.navigate("WaitConfirmationScreen")
             style={{ width: "100%", height: verticalScale(40) }}
             className={` justify-center items-center  mt-[3%] rounded-md py-[2%] px-[2%] ${serviceColors[item?.serviceType] || "bg-[#0054A5]"} `}
           >
             <Text className=" font-poppins-bold   text-white text-base ">
-              Pay Hand Cash
+              Pay Now
             </Text>
           </TouchableOpacity>
         </View>
       )}
+      <PaymentMethodModal
+        visible={showPayment}
+        onClose={() => setShowPayment(false)}
+      />
     </View>
   );
 }
