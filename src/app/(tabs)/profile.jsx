@@ -22,7 +22,7 @@ export default function UserProfileScreen() {
   return (
     <View className="flex-1 px-[5%] bg-[#F9F9F9]">
       <View className="">
-        <Text className="font-poppins-semiBold text-lg text-[#1F2937] ">
+        <Text className="font-poppins-semiBold text-center text-lg text-[#1F2937] ">
           My Profile
         </Text>
       </View>

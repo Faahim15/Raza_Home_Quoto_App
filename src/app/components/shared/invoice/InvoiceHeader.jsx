@@ -8,12 +8,12 @@ const InvoiceHeader = () => {
     <View className="bg-[#1A73E8]  pb-[8%] px-[6%]">
       {/* Header with back button and title */}
       <View className="flex-row  items-center  py-[3%]  w-full  gap-[3%]">
-        <TouchableOpacity onPress={() => router.back()}>
+        {/* <TouchableOpacity onPress={() => router.back()}>
           <Ionicons name="arrow-back" size={24} color="#fff" />
         </TouchableOpacity>
         <Text className="font-poppins-semiBold text-[#F9FAFB] text-xl">
           Review
-        </Text>
+        </Text> */}
       </View>
 
       {/* Invoice content */}

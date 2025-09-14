@@ -13,6 +13,7 @@ import { verticalScale } from "../components/adaptive/Adaptiveness";
 import Pricing from "../components/shared/invoice/Pricing";
 import PaymentInfo from "../components/shared/invoice/PaymentInfo";
 import InvoiceButton from "../components/shared/invoice/InvoiceButton";
+import { router } from "expo-router";
 export default function Invoice() {
   return (
     <View className="flex-1 bg-[#F9FAFB]">
@@ -69,7 +70,7 @@ export default function Invoice() {
         <PaymentInfo />
       </ScrollView>
       {/* button */}
-      <InvoiceButton />
+      <InvoiceButton onPress={() => router.replace("/home")} />
     </View>
   );
 }

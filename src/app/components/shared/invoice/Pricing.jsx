@@ -5,7 +5,7 @@ import { SvgXml } from "react-native-svg";
 import BreakDown from "./BreakDown";
 export default function Pricing() {
   return (
-    <View className="border-b border-[#E5E7EB] pb-[0%] px-[6%] mt-[3%]">
+    <View className="border-b border-[#E5E7EB] px-[6%] mt-[3%]">
       <View className="border-b border-[#E5E7EB] ">
         {/* header */}
         <View className="flex-row  gap-[2%]">
@@ -16,7 +16,7 @@ export default function Pricing() {
         </View>
 
         {/* pricing Breakdown */}
-        <View className="gap-[1.5%] pt-[1%] ">
+        <View className="gap-[2%] pt-[1%] ">
           <BreakDown title="Plumbing Service" price="$150.00" />
           <BreakDown title="Pipe Replacement" price="$50.00" />
           <BreakDown title="HST (13%)" price="$26.00" />

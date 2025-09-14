@@ -48,7 +48,11 @@ const ServiceItem = ({ item }) => {
           {/* Profile Image */}
           <TouchableOpacity
             onPress={
-              () => {}
+              () =>
+                router.push({
+                  pathname: "/myJobs/serviceProfile",
+                  params: { showButtons: false, serviceId: item.id },
+                })
               //   navigation.navigate("SelectedProviderDetailsScreen", {
               //     provider: item,
               //     showButtons: false,

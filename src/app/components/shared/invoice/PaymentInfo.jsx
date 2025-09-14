@@ -12,7 +12,7 @@ export default function PaymentInfo() {
           Payment Information
         </Text>
       </View>
-      <View className="pt-[2%]">
+      <View className="gap-[2%] pt-[1%]">
         <BreakDown color="#16A34A" title="Amount Paid" price="$226.00" />
         <BreakDown title="Payment Method" price="Paid through app" />
         <BreakDown

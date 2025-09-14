@@ -1,8 +1,26 @@
 import { View, Text, TouchableOpacity, Modal } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import { useEffect, useState } from "react";
+import SuccessModal from "./SuccessModal";
 
 const PaymentMethodModal = ({ visible, onClose }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    if (showModal) {
+      const timer = setTimeout(() => {
+        router.replace("/shared/invoice");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showModal]);
+
+  const handleSuccessModal = () => {
+    // onClose();
+    setShowModal(true);
+  };
+
   return (
     <Modal
       visible={visible}
@@ -18,7 +36,10 @@ const PaymentMethodModal = ({ visible, onClose }) => {
           </Text>
 
           {/* Pay via App Option */}
-          <TouchableOpacity className="bg-white border border-[#E5E7EB] rounded-2xl p-[5%] mb-[4%] flex-row items-center">
+          <TouchableOpacity
+            onPress={handleSuccessModal}
+            className="bg-white border border-[#E5E7EB] rounded-2xl p-[5%] mb-[4%] flex-row items-center"
+          >
             <View className="bg-blue-500 rounded-xl p-[3%] mr-[4%]">
               <Ionicons name="card" size={24} color="white" />
             </View>
@@ -60,6 +81,14 @@ const PaymentMethodModal = ({ visible, onClose }) => {
             </View>
           </TouchableOpacity>
         </View>
+        <SuccessModal
+          modalHeader={{
+            title: "Payment Sucessfull",
+            subtitle: "Payment of monthly plan $75.00 has paid successfully",
+          }}
+          onClose={() => setShowModal(false)}
+          visible={showModal}
+        />
       </View>
     </Modal>
   );

@@ -9,6 +9,11 @@ import {
   Poppins_700Bold,
   useFonts,
 } from "@expo-google-fonts/poppins";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from "react";
+
+// Prevent the splash screen from auto-hiding before asset loading is complete
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
@@ -18,7 +23,17 @@ export default function RootLayout() {
     Poppins_700Bold,
   });
 
-  if (!fontsLoaded) return null;
+  useEffect(() => {
+    if (fontsLoaded || fontError) {
+      // Hide the splash screen after fonts are loaded or if there's an error
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, fontError]);
+
+  if (!fontsLoaded && !fontError) {
+    // Keep splash screen visible while fonts are loading
+    return null;
+  }
 
   return (
     <SafeAreaView className="flex-1 bg-[#F9FAFB]">

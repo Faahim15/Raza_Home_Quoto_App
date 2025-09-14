@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Modal } from "react-native";
+import { View, Text, TouchableOpacity, Modal, Pressable } from "react-native";
 import LottieView from "lottie-react-native";
 import { scale, verticalScale } from "../../adaptive/Adaptiveness";
 import { router } from "expo-router";
@@ -47,11 +47,14 @@ const SuccessModal = ({ visible, onClose, modalHeader }) => {
           </Text>
 
           {/* Thank You Button */}
-          <View className="w-[85%] bg-black rounded-lg py-[4%] items-center">
+          <Pressable
+            onPress={onClose}
+            className="w-[85%] bg-black rounded-lg py-[4%] items-center"
+          >
             <Text className="text-white font-poppinsBold text-base">
               Thank You
             </Text>
-          </View>
+          </Pressable>
         </View>
       </View>
     </Modal>
