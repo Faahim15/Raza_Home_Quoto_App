@@ -2,6 +2,7 @@ import { useState } from "react";
 import { View, Text, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import CustomButton from "../home/services/provider/details/CustomButton";
+import { router } from "expo-router";
 
 export default function PaymentChecklist() {
   const [cashReceived, setCashReceived] = useState(false);
@@ -54,8 +55,9 @@ export default function PaymentChecklist() {
       </Pressable> */}
       <View className=" ">
         <CustomButton
+          onPress={() => router.replace("/provider/reviewForm")}
           agreeToTerms={cashReceived}
-          title="Complete Job"
+          title="Give Feedback"
           route="Home"
         />
       </View>
