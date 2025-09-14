@@ -22,7 +22,7 @@ export default function ReviewFormScreen() {
       <WriteBox />
 
       <View className="flex-1 justify-end pb-[25%] px-[5%]">
-        <CustomButton title="Done" onPress={() => router.back()} />
+        <CustomButton title="Done" onPress={() => router.replace("/myJobs")} />
       </View>
     </View>
   );

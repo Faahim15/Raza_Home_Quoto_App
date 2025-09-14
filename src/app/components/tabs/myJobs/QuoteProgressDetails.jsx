@@ -10,7 +10,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { scale, verticalScale } from "../../adaptive/Adaptiveness";
 import { router } from "expo-router";
 import UpdatedOffer from "./UpdatedOffer";
-export default function QuoteReqDetails({ item, showStatus = false }) {
+export default function QuoteProgressDetails({ item }) {
   const serviceColors = {
     "TV repair and Installation": "bg-[#319FCA]",
     "AC Repair and Maintenance": "bg-[#FF6B6B]",
@@ -20,7 +20,7 @@ export default function QuoteReqDetails({ item, showStatus = false }) {
   const handleServicePress = () => {
     router.push({
       pathname: "/myJobs/jobDetails",
-      params: { serviceId: item.id, showButtons: true },
+      params: { serviceId: item.id, showButtons: false },
     });
   };
   return (

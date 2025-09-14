@@ -2,21 +2,18 @@ import { View, Image, Text, TouchableOpacity, FlatList } from "react-native";
 import { scale, verticalScale } from "../../adaptive/Adaptiveness";
 import { Ionicons } from "@expo/vector-icons";
 import servicesData from "../../data/shared/ServicesData";
+import serviceColors from "../../../util/colors";
+import PaymentMethodModal from "../../shared/modal/PaymentMethodModal";
+import { useState } from "react";
+import { router } from "expo-router";
 // Updated ServiceItem component with navigation
 const ServiceItem = ({ item }) => {
-  const serviceColors = {
-    "TV repair and Installation": "bg-[#319FCA]",
-    "AC Repair and Maintenance": "bg-[#FF6B6B]",
-    "Plumbing Services": "bg-[#10B981]",
-    "Electrical Repair": "bg-[#8B5CF6]",
-  };
-
+  const [showPayment, setShowPayment] = useState(false);
   const handleServicePress = () => {
-    // Navigate to details screen with service data
-    // navigation.navigate("JobProviderInfoScreen", {
-    //   serviceData: item,
-    //   completeJob: false,
-    // });
+    router.push({
+      pathname: "/myJobs/jobDetails",
+      params: { serviceId: item.id, showButtons: false },
+    });
   };
 
   return (
@@ -35,9 +32,9 @@ const ServiceItem = ({ item }) => {
         <Text className="text-white font-poppins-400regular text-base">
           {item.serviceType}
         </Text>
-        <TouchableOpacity onPress={handleServicePress}>
+        <View>
           <Ionicons name="arrow-forward" size={16} color="#fff" />
-        </TouchableOpacity>
+        </View>
       </TouchableOpacity>
 
       <View
@@ -96,15 +93,19 @@ const ServiceItem = ({ item }) => {
 
             <View className=" ">
               <TouchableOpacity
-                onPress={() => {}} //navigation.navigate("WaitConfirmationScreen")
+                onPress={() => setShowPayment(true)}
                 style={{ width: "full", height: verticalScale(40) }}
                 className={` justify-center items-center  mt-[3%] rounded-md py-[2%] px-[2%] ${serviceColors[item?.serviceType] || "bg-[#0054A5]"} `}
               >
                 <Text className=" font-poppins-bold   text-white text-base font-semibold">
-                  Pay Hand Cash
+                  Pay Now
                 </Text>
               </TouchableOpacity>
             </View>
+            <PaymentMethodModal
+              visible={showPayment}
+              onClose={() => setShowPayment(false)}
+            />
           </View>
         </View>
       </View>

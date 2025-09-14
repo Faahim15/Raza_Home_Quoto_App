@@ -9,6 +9,7 @@ import QuoteReqData from "../components/data/jobs/QuotesData";
 export default function JobDetails() {
   const { serviceId, showButtons } = useLocalSearchParams();
   const service = QuoteReqData.find((s) => s.id.toString() === serviceId);
+  const shouldShowbutton = showButtons === "true";
 
   return (
     <View className="flex-1 bg-[#F9F9F9]">
@@ -23,28 +24,30 @@ export default function JobDetails() {
           </View>
         </ScrollView>
       </View>
-      <View
-        className="flex-row gap-[6%] h-[14%]  border border-[#D8DCE0] justify-center items-center "
-        style={[
-          XStyle.shadowBox,
-          { borderTopRightRadius: scale(20), borderTopLeftRadius: scale(20) },
-        ]}
-      >
-        <BotttomButtons
-          onPress={() => router.replace("/myJobs")}
-          backgroundColor="#fff"
-          color="#EF4444"
-          borderColor="#EF4444"
-          title="Decline"
-        />
-        <BotttomButtons
-          onPress={() => router.replace("/myJobs")}
-          backgroundColor="#18649F"
-          color="#fff"
-          borderColor="#18649F"
-          title="Accept"
-        />
-      </View>
+      {shouldShowbutton && (
+        <View
+          className="flex-row gap-[6%] h-[14%]  border border-[#D8DCE0] justify-center items-center "
+          style={[
+            XStyle.shadowBox,
+            { borderTopRightRadius: scale(20), borderTopLeftRadius: scale(20) },
+          ]}
+        >
+          <BotttomButtons
+            onPress={() => router.replace("/myJobs")}
+            backgroundColor="#fff"
+            color="#EF4444"
+            borderColor="#EF4444"
+            title="Decline"
+          />
+          <BotttomButtons
+            onPress={() => router.replace("/myJobs")}
+            backgroundColor="#18649F"
+            color="#fff"
+            borderColor="#18649F"
+            title="Accept"
+          />
+        </View>
+      )}
     </View>
   );
 }

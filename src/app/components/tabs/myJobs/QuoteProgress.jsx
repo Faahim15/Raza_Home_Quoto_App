@@ -61,7 +61,7 @@ const ServiceItem = ({ item }) => {
               () =>
                 router.push({
                   pathname: "/myJobs/serviceProfile",
-                  params: { showButtons: true, serviceId: item.id },
+                  params: { showButtons: false, serviceId: item.id },
                 })
               //   navigation.navigate("SelectedProviderDetailsScreen", {
               //     provider: item,
