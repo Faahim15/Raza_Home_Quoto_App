@@ -12,6 +12,7 @@ import Service from "../components/shared/invoice/Service";
 import { verticalScale } from "../components/adaptive/Adaptiveness";
 import Pricing from "../components/shared/invoice/Pricing";
 import PaymentInfo from "../components/shared/invoice/PaymentInfo";
+import InvoiceButton from "../components/shared/invoice/InvoiceButton";
 export default function Invoice() {
   return (
     <View className="flex-1 bg-[#F9FAFB]">
@@ -67,6 +68,8 @@ export default function Invoice() {
         {/* payment information */}
         <PaymentInfo />
       </ScrollView>
+      {/* button */}
+      <InvoiceButton />
     </View>
   );
 }
